@@ -46,4 +46,4 @@ If this policy changes, the date above is updated and the change is published in
 
 ## Contact
 
-![Contact](https://github.com/bada774/WallabagRoulette/issues)
+[Contact](https://github.com/bada774/WallabagRoulette/issues)
