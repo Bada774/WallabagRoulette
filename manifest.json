@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Wallabag Roulette",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Chrome extension to randomly pick a page from wallabag by tag: scheduled notification + popup.",
     "icons": {
         "16": "src/icons/icon-for-light-16.png",
@@ -38,7 +38,8 @@
     "commands": {
         "add-current-tab": {
             "suggested_key": {
-                "default": "Alt+Shift+A"
+                "default": "Ctrl+Shift+Y",
+                "mac": "Command+Shift+Y"
             },
             "description": "Add the current tab to wallabag"
         }

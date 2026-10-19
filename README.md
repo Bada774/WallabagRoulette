@@ -13,7 +13,7 @@ A Chrome extension that picks a **random unread link from your own [wallabag](ht
 - **Scheduled notification.** A random pick every N days at the time you choose, with _Open_ and _Other_ buttons.
 - **The current pick stays put.** The popup and the notification show the same entry until you press _Watched_. Only then is it archived in wallabag.
 - **Categories.** Tag what you save (`movies`, `books`, `anime`, ...), choose from your existing wallabag tags, get a hint when a new tag looks like an existing one, and filter random picks by one category.
-- **Fast saving.** Add the current tab or all tabs of the window from the popup, from the right-click menu (page, link, toolbar icon) or with a hotkey (`Alt+Shift+A` by default). Adding runs in the background and retries when the network is down.
+- **Fast saving.** Add the current tab or all tabs of the window from the popup, from the right-click menu (page, link, toolbar icon) or with a hotkey (`Ctrl+Shift+Y` by default). Adding runs in the background and retries when the network is down.
 - **Light and dark themes**, including a toolbar icon that follows the browser theme.
 
 ## Setup
