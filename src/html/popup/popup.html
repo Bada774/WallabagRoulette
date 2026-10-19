@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Wallabag Roulette</title>
+        <link rel="stylesheet" href="../../css/popup/popup.css" />
+    </head>
+    <body>
+        <header class="top">
+            <h1>What to read next?</h1>
+            <button
+                type="button"
+                id="settings"
+                class="icon-btn"
+                title="Settings"
+                aria-label="Settings"
+            >
+                ⚙
+            </button>
+        </header>
+
+        <p
+            id="status"
+            class="status"
+            data-state="info"
+            role="status"
+            aria-live="polite"
+        >
+            Loading...
+        </p>
+
+        <article id="card" class="card" hidden>
+            <img id="preview" class="card__preview" alt="" hidden />
+            <div class="card__body">
+                <h2 id="title" class="card__title"></h2>
+                <p class="card__meta">
+                    <span id="domain"></span>
+                    <span id="reading-time"></span>
+                </p>
+                <p id="entry-tags" class="card__tags" hidden></p>
+            </div>
+        </article>
+
+        <div class="row">
+            <button type="button" id="open" class="btn btn--primary" disabled>
+                Open
+            </button>
+            <button type="button" id="reroll" class="btn" disabled>
+                Another
+            </button>
+            <button
+                type="button"
+                id="done"
+                class="btn"
+                disabled
+                title="Move to archive in wallabag and show the next one"
+            >
+                Watched
+            </button>
+        </div>
+
+        <section id="filter" class="block" aria-label="Filter" hidden>
+            <span class="label">Show only</span>
+            <div id="filter-chips" class="chips"></div>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-label="Add to list">
+            <label class="label" for="tag-input">Tags for new entries</label>
+
+            <div id="tag-chips" class="chips"></div>
+
+            <div class="tag-entry">
+                <input
+                    id="tag-input"
+                    type="text"
+                    list="tag-suggestions"
+                    placeholder="e.g. film, book"
+                    autocomplete="off"
+                    spellcheck="false"
+                />
+                <button type="button" id="tag-add" class="btn btn--small">
+                    Add
+                </button>
+            </div>
+            <datalist id="tag-suggestions"></datalist>
+
+            <p id="tag-hint" class="hint" role="status" hidden></p>
+
+            <div id="tag-quick" class="chips"></div>
+
+            <div class="row row--spaced">
+                <button type="button" id="add-tab" class="btn btn--wide">
+                    + Add this tab
+                </button>
+                <button type="button" id="add-all" class="btn btn--wide">
+                    + All tabs in window
+                </button>
+            </div>
+            <label class="check" for="close-after">
+                <input type="checkbox" id="close-after" />
+                <span>Close tabs after adding</span>
+            </label>
+            <p
+                id="notice"
+                class="notice"
+                role="status"
+                aria-live="polite"
+                hidden
+            ></p>
+        </section>
+
+        <script type="module" src="../../js/html/popup/popup.js"></script>
+    </body>
+</html>

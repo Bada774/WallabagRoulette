@@ -1,0 +1,46 @@
+{
+    "manifest_version": 3,
+    "name": "Wallabag Roulette",
+    "version": "1.0.0",
+    "description": "Chrome extension to randomly pick a page from wallabag by tag: scheduled notification + popup.",
+    "icons": {
+        "16": "src/icons/icon-for-light-16.png",
+        "32": "src/icons/icon-for-light-32.png",
+        "48": "src/icons/icon-for-light-48.png",
+        "128": "src/icons/icon-for-light-128.png"
+    },
+    "permissions": [
+        "storage",
+        "alarms",
+        "notifications",
+        "tabs",
+        "offscreen",
+        "contextMenus"
+    ],
+    "optional_host_permissions": ["https://*/*", "http://*/*"],
+    "background": {
+        "service_worker": "src/js/background/background.js",
+        "type": "module"
+    },
+    "action": {
+        "default_title": "What to read next?",
+        "default_popup": "src/html/popup/popup.html",
+        "default_icon": {
+            "16": "src/icons/icon-for-light-16.png",
+            "24": "src/icons/icon-for-light-24.png",
+            "32": "src/icons/icon-for-light-32.png"
+        }
+    },
+    "options_ui": {
+        "page": "src/html/options/options.html",
+        "open_in_tab": true
+    },
+    "commands": {
+        "add-current-tab": {
+            "suggested_key": {
+                "default": "Alt+Shift+A"
+            },
+            "description": "Add the current tab to wallabag"
+        }
+    }
+}

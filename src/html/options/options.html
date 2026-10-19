@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Wallabag Roulette — настройки</title>
+        <!-- Paths are calculated relative to this file: src/html/options/ -->
+        <link rel="stylesheet" href="../../css/options/options.css" />
+    </head>
+    <body>
+        <main class="page">
+            <header class="page__header">
+                <h1>Wallabag Roulette</h1>
+                <p class="muted">
+                    A random link from your wallabag: by schedule and by click.
+                </p>
+            </header>
+
+            <form id="settings-form" autocomplete="off" novalidate>
+                <!-- Connection -->
+                <section class="card">
+                    <h2>Connection to wallabag</h2>
+
+                    <div class="field">
+                        <label for="baseUrl">Server Address</label>
+                        <input
+                            id="baseUrl"
+                            name="baseUrl"
+                            type="url"
+                            placeholder="https://wallabag.example.com"
+                            required
+                        />
+                        <p class="hint">
+                            Without a trailing slash. The extension will request
+                            access specifically to this address.
+                        </p>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="clientId">Client ID</label>
+                            <input
+                                id="clientId"
+                                name="clientId"
+                                type="text"
+                                spellcheck="false"
+                                required
+                            />
+                        </div>
+                        <div class="field">
+                            <label for="clientSecret">Client secret</label>
+                            <input
+                                id="clientSecret"
+                                name="clientSecret"
+                                type="password"
+                                spellcheck="false"
+                                autocomplete="new-password"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <p class="hint">
+                        Take it from wallabag: menu → «API Client Management»
+                        (<code>/developer</code>) → «Create new client».
+                    </p>
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="username">Username</label>
+                            <input
+                                id="username"
+                                name="username"
+                                type="text"
+                                spellcheck="false"
+                                required
+                            />
+                        </div>
+                        <div class="field">
+                            <label for="password">Password</label>
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                autocomplete="new-password"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <p class="hint hint--warn">
+                        Data is stored in the browser
+                        (<code>chrome.storage</code>) without encryption. For a
+                        personal profile, this is normal.
+                    </p>
+                </section>
+
+                <!-- Selection -->
+                <section class="card">
+                    <h2>What to Select</h2>
+                    <div class="field">
+                        <label for="tag">Tag</label>
+                        <input
+                            id="tag"
+                            name="tag"
+                            type="text"
+                            placeholder="watchPlugin"
+                            spellcheck="false"
+                            required
+                        />
+                        <p class="hint">
+                            From entries with this tag (except archived) a
+                            random one is selected. The same tag is applied to
+                            new links.
+                        </p>
+                        <p id="tag-warning" class="hint hint--warn" hidden>
+                            Changing the tag does not re-tag existing entries:
+                            entries saved under the old tag will no longer be
+                            shown here (they stay in wallabag untouched).
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Notifications -->
+                <section class="card">
+                    <h2>Notifications</h2>
+
+                    <label class="switch" for="notificationsOn">
+                        <input
+                            id="notificationsOn"
+                            name="notificationsOn"
+                            type="checkbox"
+                        />
+                        <span class="switch__track" aria-hidden="true"></span>
+                        <span class="switch__label"
+                            >Send random link due to schedule</span
+                        >
+                    </label>
+
+                    <div class="field-row" id="schedule-fields">
+                        <div class="field">
+                            <label for="intervalDays"
+                                >Once every ... days</label
+                            >
+                            <input
+                                id="intervalDays"
+                                name="intervalDays"
+                                type="number"
+                                min="1"
+                                max="30"
+                                step="1"
+                            />
+                        </div>
+                        <div class="field">
+                            <label for="timeOfDay">What time</label>
+                            <input
+                                id="timeOfDay"
+                                name="timeOfDay"
+                                type="time"
+                            />
+                        </div>
+                    </div>
+                    <p class="hint" id="next-run"></p>
+                </section>
+
+                <!-- Actions -->
+                <div class="actions">
+                    <button type="submit" id="save" class="btn btn--primary">
+                        Save
+                    </button>
+                    <button type="button" id="check" class="btn">
+                        Check connection
+                    </button>
+                    <button type="button" id="test-notification" class="btn">
+                        Test notification
+                    </button>
+                </div>
+
+                <section class="card">
+                    <h2>Saved data</h2>
+                    <p class="hint">
+                        Sign out removes the server address, client ID and
+                        secret, username, password and tokens from this browser.
+                        Reset everything also removes your settings, the current
+                        pick and the list of categories.
+                    </p>
+                    <div class="actions">
+                        <button type="button" id="sign-out" class="btn">
+                            Sign out
+                        </button>
+                        <button
+                            type="button"
+                            id="reset-all"
+                            class="btn btn--danger"
+                        >
+                            Reset everything
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Error/success messages. data-state: info | ok | error -->
+                <p
+                    id="message"
+                    class="message"
+                    role="status"
+                    aria-live="polite"
+                    hidden
+                ></p>
+            </form>
+        </main>
+
+        <script type="module" src="../../js/html/options/options.js"></script>
+    </body>
+</html>
